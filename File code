@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h> // used for exit()
+int main() {
+  FILE *fptr;
+  char data[1000];
+
+  fptr = fopen("D:\\program.txt", "r");
+
+  // end program if FILE pointer is NULL
+  if (fptr == NULL) {
+    printf("Error!");
+    exit(1); // exit the whole program
+  }
+
+  // "%[^\n]" instead of "%s" to read
+  // data until the new line
+  fscanf(fptr, "%[^\n]", data);
+
+  puts(data); // print data
+
+  // close the file
+  fclose(fptr);
+
+  return 0;
+}
